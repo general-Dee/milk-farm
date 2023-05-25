@@ -1,0 +1,11 @@
+# Ignore Node.js build artifacts
+.next/
+
+# Ignore environment files
+.env
+
+# Ignore log files
+*.log
+
+# Ignore dependency directories
+node_modules/
