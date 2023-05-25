@@ -27,7 +27,7 @@ function Experience({}: Props) {
         <ExperienceCard title={"Contractors Briefing"} imageUrl={"./experience/4.jpg"} heading={"MD/CEO Kaduna Markets"}  description={"Our company has always been driven by innovation, excellence, and a commitment to meeting the evolving needs of our customers. Today, I present to you a project that perfectly aligns with these core values and has the power to catapult us to new heights."}/>
       
         <ExperienceCard title={"Site Inspection"} imageUrl={"./experience/3.jpg"} heading={"MD/CEO & contractors"}  description={"During the site inspection, I thoroughly examined all aspects of the milk farm, starting with the physical infrastructure. I assessed the condition of the barns, milking parlors, and other facilities to ensure they were well-maintained and capable of accommodating our operational needs. Proper ventilation, lighting, and hygiene standards were also evaluated to ensure optimal conditions for the cows and milk production."}/>
-   {/* Expgi */}
+   
         <ExperienceCard title={"Cattle Barn Inspection"} imageUrl={"./experience/1.jpg"} heading={"Newly constructed cattle barns"} description={"thorough evaluation of a cattle barn or cowshed to assess its condition, functionality, and compliance with safety and animal welfare standards. The inspection is typically conducted by a qualified individual, such as a veterinarian, livestock inspector, or farm manager, with expertise in cattle housing and management"}/>
      </div>
     </motion.div>
