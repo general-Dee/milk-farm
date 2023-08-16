@@ -9,10 +9,16 @@ type Props = {}
 
 function Hero({}: Props) {
     const [text, count] = useTypewriter({
+        // words: [
+        //     "Hi, get ready to be amazed!", 
+        //     "Welcome to Damau Milk Farm", 
+        //     "Nature's Bounty Delivered Fresh"
+        // ],
         words: [
-            "Hi, get ready to be amazed!", 
-            "Welcome to Damau Milk Farm", 
-            "Nature's Bounty Delivered Fresh"
+            "Wander through our sprawling pastures and witness our cows grazing freely in their natural habitat.", 
+            "Gain insight into the milking process and learn about the care and attention that goes into producing each glass of milk.", 
+            "Peek into our cheese-making facility and see firsthand how our artisanal cheeses are crafted.",
+            "Engage with our knowledgeable guides, ask questions, and learn about the eco-friendly practices that define Damau Dairy."
         ],
         loop:true,
         delaySpeed: 2000,
@@ -22,7 +28,7 @@ function Hero({}: Props) {
           <BackgroundCircles />
           <img src="./banner/1.jpg" className="relative rounded-full h-32 w-32 mx-auto object-cover"/>
          <div className="z-20">
-            <h2 className="uppercase text-gray-500 tracking-[15px]">Agriculture</h2>
+            <h2 className="uppercase text-[#8CC63F] tracking-[15px]">Agriculture</h2>
             <h1 className="text-3xl lg:text-5xl font-semibold px-10">
                 <span>{text}</span>
                 <Cursor cursorColor="#F7AB0A" />
