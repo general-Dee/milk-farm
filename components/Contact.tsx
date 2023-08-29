@@ -86,7 +86,7 @@ function Contact() {
                             <input type="text" {...register("name", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </label>
                         {errors.name?.type === "required" && (
-                            <p>
+                            <p className='text-red-600'>
                                 This field is required
                             </p>
                         )}
@@ -94,7 +94,7 @@ function Contact() {
                     <label className="leading-7 text-sm text-gray-600">Email
                             <input type="email" {...register("email", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                             {errors.email?.type === "required" && (
-                            <p>
+                            <p className='text-red-600'>
                                 This field is required
                             </p>
                         )}
@@ -104,14 +104,14 @@ function Contact() {
                             <input type="text" {...register("subject", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </label>
                         {errors.subject?.type === "required" && (
-                            <p>
+                            <p className='text-red-600'>
                                 This field is required
                             </p>
                         )}
                 <label className="leading-7 text-sm text-gray-600">Message
                             <textarea {...register("message", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                             {errors.message?.type === "required" && (
-                            <p>
+                            <p className='text-red-600'>
                                 This field is required
                             </p>
                         )}
