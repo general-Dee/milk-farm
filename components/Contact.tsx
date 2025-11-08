@@ -1,126 +1,140 @@
-// import React, { useState } from 'react'
-import { PhoneIcon, MapPinIcon, EnvelopeIcon} from '@heroicons/react/24/solid'
-// import { useForm, SubmitHandler } from "react-hook-form"
-// import { addDoc, collection, onSnapshot } from 'firebase/firestore'
-// import { toast } from 'react-toastify'
-import { useForm } from 'react-hook-form';
-// import { firestore } from '../firebase'
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
-import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../firebase';
+"use client";
+import React, { useState } from "react";
+import { db } from "../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState({
+    fullName: "",
+    whatsapp: "",
+    location: "",
+    animalType: "Cow", // default option
+    order: "",
+  });
+  const [loading, setLoading] = useState(false);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-interface FormData {
-    name: string;
-    email: string;
-    subject: string;
-    message: string;
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
 
-function Contact() {
-    
-    const [ name, setName ] = useState('')
-    const [ email, setEmail ] = useState('')
-    const [ subject, setSubject ] = useState('')
-    const [ message, setMessage ] = useState('')
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormData>()
+    try {
+      const { fullName, whatsapp, location, animalType, order } = formData;
 
+      if (!fullName || !whatsapp || !location || !animalType || !order) {
+        toast.error("Please fill out all fields!");
+        setLoading(false);
+        return;
+      }
 
-    const clearForm = () => {
-        reset()
-        // console.log("Document subbmitted")
-        toast.success("Your message was successfully submitted")
+      await addDoc(collection(db, "livestockLeads"), {
+        fullName: fullName.trim(),
+        whatsapp: whatsapp.trim(),
+        location: location.trim(),
+        animalType,
+        order: order.trim(),
+        createdAt: serverTimestamp(),
+      });
+
+      toast.success("Submission successful! Opening WhatsApp…");
+
+      setFormData({
+        fullName: "",
+        whatsapp: "",
+        location: "",
+        animalType: "Cow",
+        order: "",
+      });
+
+      const message = encodeURIComponent(
+        `Hello, my name is ${fullName}. I’m interested in ${animalType} (${order} units).`
+      );
+      const whatsappNumber = "2348012345678"; // replace with your sales number
+      window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+    } catch (error) {
+      console.error("Firestore error:", error);
+      toast.error("An error occurred while submitting. Please try again.");
+    } finally {
+      setLoading(false);
     }
-
-    const onFormSubmit = async (data: FormData) => {
-        // e.preventDefault()
-        // console.log("Data", data)
-        setName(data.name)
-        setEmail(data.email)
-        setSubject(data.subject)
-        setMessage(data.message)
-
-        console.log(name,email,subject,message)
-        const collectionRef = collection(db , "comments")
-        const payLoad = {name, email, subject, message}
-        const req = await addDoc(collectionRef, payLoad)
-        
-        if (req) {
-            clearForm()
-        }
-    }
-        
+  };
 
   return (
-    <div className='h-screen flex relative flex-col text-center md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center'>
-        <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Contact Us</h3>
+    <div className="flex flex-col items-center justify-center px-4 py-16 text-center">
+      <h2 className="text-3xl font-bold mb-8 text-[#8CC63F]">Get in Touch with Us</h2>
 
-        <div className='flex flex-col space-y-10'>
-            <h4 className='text-lg md:text-4xl font-semiboldtext-center pt-20 mt-10'>Do you have questions?{" "} 
-            <span className='decoration-[#F7AB0A]/50 underline'>Let's talk</span></h4>
-        </div>
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md bg-white rounded-2xl shadow-lg p-6 space-y-4"
+      >
+        <input
+          name="fullName"
+          type="text"
+          placeholder="Full Name"
+          value={formData.fullName}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-[#8CC63F]"
+        />
 
-        <div>
-            <div className='flex items-center space-x-5 justify-center mt-20'>
-                <PhoneIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                <p className='text-lg md:text-xl'>+234 000 000 0000</p>
-            </div>
-            <div className='flex items-center space-x-5 justify-center mt-5'>
-                <EnvelopeIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                <p className='text-lg md:text-xl'>kadunamarkets.gov.ng</p>
-            </div>
-            <div className='flex items-center space-x-5 justify-center mt-5'>
-                <MapPinIcon className='text-[#F7AB0A] h-7 w-7 animate-pulse'/>
-                <p className='text-lg md:text-xl'>Kubau LGA, Kaduna State.</p>
-            </div>
+        <input
+          name="whatsapp"
+          type="tel"
+          placeholder="WhatsApp Number"
+          value={formData.whatsapp}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-[#8CC63F]"
+        />
 
-            <form 
-             onSubmit={handleSubmit(onFormSubmit)}
-            className='flex flex-col space-y-2 w-fit mx-auto my-10'>
-                <div className='flex space-x-2'>
-                <div className="relative mb-4">
-                        <label className="leading-7 text-sm text-gray-600">Name
-                            <input type="text" {...register("name", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </label>
-                        {errors.name?.type === "required" && (
-                            <p className='text-red-600'>
-                                This field is required
-                            </p>
-                        )}
-                    </div>
-                    <label className="leading-7 text-sm text-gray-600">Email
-                            <input type="email" {...register("email", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                            {errors.email?.type === "required" && (
-                            <p className='text-red-600'>
-                                This field is required
-                            </p>
-                        )}
-                    </label>
-                </div>
-                <label className="leading-7 text-sm text-gray-600">Subject
-                            <input type="text" {...register("subject", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
-                        </label>
-                        {errors.subject?.type === "required" && (
-                            <p className='text-red-600'>
-                                This field is required
-                            </p>
-                        )}
-                <label className="leading-7 text-sm text-gray-600">Message
-                            <textarea {...register("message", {required: true})} className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
-                            {errors.message?.type === "required" && (
-                            <p className='text-red-600'>
-                                This field is required
-                            </p>
-                        )}
-                        </label> 
-                <button type='submit' className='bg-[#F7AB0A] py-5 px-10 rounded-md text-black font-bold'>Submit</button>
-            </form>
-        </div>
+        <input
+          name="location"
+          type="text"
+          placeholder="Location"
+          value={formData.location}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-[#8CC63F]"
+        />
+
+        {/* ✅ Animal Type Dropdown */}
+        <select
+          name="animalType"
+          value={formData.animalType}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-[#8CC63F]"
+        >
+          <option value="Cow">Cow</option>
+          <option value="Goat">Goat</option>
+          <option value="Ram">Ram</option>
+        </select>
+
+        <input
+          name="order"
+          type="text"
+          placeholder="Order Quantity"
+          value={formData.order}
+          onChange={handleChange}
+          required
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-[#8CC63F]"
+        />
+
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full bg-[#8CC63F] text-white font-semibold py-2 rounded-lg hover:bg-[#7AB034] transition-colors"
+        >
+          {loading ? "Submitting..." : "Submit"}
+        </button>
+      </form>
     </div>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

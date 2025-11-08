@@ -6,13 +6,13 @@ import { getStorage } from 'firebase/storage'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDmfykuFKi1d62VsmycBej8bsA3-kn5IVs",
-    authDomain: "damau-milk-farm.firebaseapp.com",
-    projectId: "damau-milk-farm",
-    storageBucket: "damau-milk-farm.appspot.com",
-    messagingSenderId: "982183124149",
-    appId: "1:982183124149:web:21e24825e8544ec02b72fc"
-  };
+  apiKey: "AIzaSyDukoonQ4z-xd5jakKfjSRLIZn9KUheLww",
+  authDomain: "originalmalyam.firebaseapp.com",
+  projectId: "originalmalyam",
+  storageBucket: "originalmalyam.firebasestorage.app",
+  messagingSenderId: "65847637845",
+  appId: "1:65847637845:web:35dfcb9627d98ec50ea1dc"
+};
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
@@ -21,5 +21,4 @@ export const db = getFirestore()
 
 export const storage = getStorage(app)
 
-export const auth = getAuth()
-
+export const auth = getAuth();

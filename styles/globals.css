@@ -14,8 +14,28 @@
         /* @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40  */
         @apply px-6 py-2 border border-[#A67C52] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#F7AB0A]/40 
     }
+    .signupButton{
+        /* @apply px-6 py-2 border bg-slate-700 border-[#A67C52] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#FFF]/40  */
+        @apply px-6 py-2 border border-[#A67C52] rounded-full uppercase text-xs tracking-widest text-gray-500 transition-all hover:border-[#F7AB0A]/40 hover:text-[#FFF]/40 pulse
 
+    }
     .contactInput{
         @apply outline-none bg-slate-400/10 rounded-sm border-b px-6 py-4 border-[#242424] text-gray-500 placeholder-gray-500 transition-all focus:border-[#F7AB0A]/40 focus:text-[#F7AB0A]/40
     }
 }
+
+@keyframes pulse-button {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(246, 171, 10, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px 5px rgba(246, 171, 10, 0.2);
+    }
+  }
+  
+  .pulse {
+    animation: pulse-button 2s infinite;
+  }
+  

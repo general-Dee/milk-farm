@@ -6,24 +6,28 @@ type Props = {}
 function Projects({}: Props) {
     const projects = [
         {
-            title: "Arla Farm",
-            displayImg: "./projects/ArlaFarm.jpg",
-            discription: "An agricultural establishment primarily focused on the production of milk and other dairy products. These farms are dedicated to raising dairy cows and maintaining facilities and systems to ensure milk production, while also considering the welfare and health of the animals"
+            title: "Alhaji Musa B., Kano",
+            subtitle: "Best Price I’ve Seen This Season!",
+            displayImg: "./projects/tes02.jpg",
+            discription: "Their direct farm pricing is real. I saved ₦60,000 on two rams for our mosque event. Smooth from start to finish."
         },
         {
-            title: "Cattle Clinic",
-            displayImg: "./projects/cattleClinic.jpg",
-            discription: "Specialized veterinary facility that focuses on the health and well-being of cattle. It provides a range of services and treatments aimed at promoting the optimal health, productivity, and disease prevention in cattle."
+            title: "Chika N., Livestock Vendor, Enugu",
+            subtitle: "Reliable Partner for My Meat Business",
+            displayImg: "./projects/tes01.jpg",
+            discription: "Reliable partner. Every goat was healthy, correctly weighed, and delivered on time. My customers were happy — I made solid profits."
         },
         {
-            title: "Cattle Barn",
-            displayImg: "./projects/cowHouse.jpg",
-            discription: "Dedicated structure designed to provide shelter, protection, and optimal living conditions for cattle. It serves as a vital component of livestock management in agricultural settings, where it plays a crucial role in ensuring the well-being and productivity of the animals"
+            title: "Mrs. Rebecca O., Port Harcourt",
+            subtitle: "They Made My Party a Success!",
+            displayImg: "./projects/tes04.jpg",
+            discription: "We ordered 3 cows for a family event. Delivery was perfectly timed and stress-free. They made our party a success!"
         },
         {
-            title: "Milking Parlor",
-            displayImg: "./projects/milkingPlaour.jpg",
-            discription: "Specialized area or building designed for the efficient and hygienic milking of dairy cows. It is an essential component of modern dairy farms and plays a critical role in ensuring the productivity and quality of milk production"
+            title: "— Mrs. Adewale A., Lagos",
+            subtitle: "Professional From Start to Finish!",
+            displayImg: "./projects/tes06.jpg",
+            discription: "Customer service was professional and responsive. I got exactly what I ordered — no excuses, no surprises."
         }
     ] 
   return (
@@ -38,7 +42,7 @@ function Projects({}: Props) {
         duration: 1.5,
     }}
     className='h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-        <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Facilities</h3>
+        <h3 className='absolute top-24 uppercase tracking-[20px] text-gray-500 text-2xl'>Real Nigerians. Real Results</h3>
 
         <div className='relative w-full flex overflow-x-scroll overflow-y-hidden snap-x snap-mandatory z-20 scrollbar scrollbar-thin scrollbar-track-gray-400/20 scrollbar-thumb-[#7FAB0A]'>
             {projects.map((project, i) => (
@@ -66,6 +70,9 @@ function Projects({}: Props) {
                             {project.title}
                         </h4>
 
+                        <p className='text-jg text-center md:text-left'>
+                            {project.subtitle}
+                        </p>
                         <p className='text-jg text-center md:text-left'>
                             {project.discription}
                         </p>

@@ -11,6 +11,8 @@ import '../styles/globals.css'
 // import { ToastContainer } from 'react-toastify'
 // import 'react-toastify/dist/ReactToastify.css'
 import { AppProps } from 'next/app';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 // interface AppProps {
@@ -23,7 +25,10 @@ import { AppProps } from 'next/app';
 function MyApp({ Component, pageProps }: AppProps) {
   // const [user, loading, error] = useAuthState(auth);
   return (
-     <Component {...pageProps} />  
+    <>
+    <Component {...pageProps} />  
+    <ToastContainer position="top-center" autoClose={3000} />
+    </>
 
   );
 }

@@ -15,10 +15,16 @@ function Hero({}: Props) {
         //     "Nature's Bounty Delivered Fresh"
         // ],
         words: [
-            "Wander through our sprawling pastures and witness our cows grazing freely in their natural habitat.", 
-            "Gain insight into the milking process and learn about the care and attention that goes into producing each glass of milk.", 
-            "Peek into our cheese-making facility and see firsthand how our artisanal cheeses are crafted.",
-            "Engage with our knowledgeable guides, ask questions, and learn about the eco-friendly practices that define Damau Dairy."
+            "Malyam Agro — The Smartest Way to Buy Livestock This Festive Season", 
+            "Get Healthy, Vet-Certified Livestock Delivered to You — Fast, Affordable & Hassle-Free", 
+            "From our farm in Kaduna straight to your city — guaranteed quality, fair pricing, and delivery in 3–5 days nationwide", 
+            // "Get Clean, Healthy, and Affordable Livestock Delivered Straight From the Farm — Without the Stress or Market Wahala!", 
+            "Finally — a reliable way to buy strong, well-fed livestock directly from trusted Nigerian farms at the best possible prices.", 
+            "No middleman wahala.", 
+            // "No brokers. No hidden costs. Just healthy animals, nationwide delivery, and peace of mind.", 
+            "Are you buying one or in bulk?",
+            "Malyam Agro supplies strong, clean, and well-fed livestock at pocket-friendly prices",
+            "delivered anywhere in Nigeria."
         ],
         loop:true,
         delaySpeed: 2000,
@@ -26,9 +32,10 @@ function Hero({}: Props) {
   return (
         <motion.div className="h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden pt-40">
           <BackgroundCircles />
-          <img src="./banner/1.jpg" className="relative rounded-full h-32 w-32 mx-auto object-cover"/>
+          <img src="./hero/cow01.jpg" className="relative rounded-full h-32 w-32 mx-auto object-cover"/>
          <div className="z-20">
-            <h2 className="uppercase text-[#8CC63F] tracking-[15px]">Agriculture</h2>
+            {/* <h2 className="uppercase text-[#8CC63F] tracking-[15px]">Livestock</h2> */}
+            <h2 className="uppercase text-[#FFF] tracking-[15px]">Livestock</h2>
             <h1 className="text-3xl lg:text-5xl font-semibold px-10">
                 <span>{text}</span>
                 <Cursor cursorColor="#F7AB0A" />
@@ -45,7 +52,7 @@ function Hero({}: Props) {
                     <button className="heroButton">Facilities</button>
                 </Link>
                 <Link href="#contact">
-                    <button className="heroButton">Contact Us</button>
+                    <button className="signupButton">Order now</button>
                 </Link>
             </div>
          </div>

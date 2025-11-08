@@ -18,17 +18,17 @@ function Experience({}: Props) {
       duration: 1.5
     }}
     className="h-screen flex relative overflow-hidden flex-col text-left md:flex-row max-w-full px-10 justify-evenly mx-auto items-center">
-     <h3 className="absolute top-24 uppercase tracking-[20px] text-2xl">Experience</h3>
+     <h3 className="absolute top-24 uppercase tracking-[20px] text-2xl">Gains</h3>
   
      <div className='w-full flex space-x-5 overflow-x-scroll pt-40  snap-x snap-mandatory scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-[#7FAB0A]'>
      
-        <ExperienceCard title={"Kadinvest 7.0"} imageUrl={"./experience/2.jpg"} heading={"Buliding a resilient economy"} description={"Our vision is to create a state-of-the-art milk farm that sets new benchmarks in milk production, animal welfare, and environmental sustainability. With a deep commitment to excellence and innovation, we aim to revolutionize the dairy farming landscape and position ourselves as leaders in the industry."}/>
+        <ExperienceCard title={"Healthy, Vet-Certified Livestock"} imageUrl={"./hero/cow03.jpg"} heading={"Get Strong, Disease-Free Animals — Guaranteed by Professional Vets"} description={"Every cow, ram, and goat is inspected, dewormed, and properly fed before delivery. You receive healthy livestock ready for resale or immediate use — no surprises, no sick animals, and no extra vet costs."}/>
     
-        <ExperienceCard title={"Contractors Briefing"} imageUrl={"./experience/4.jpg"} heading={"MD/CEO Kaduna Markets"}  description={"Our company has always been driven by innovation, excellence, and a commitment to meeting the evolving needs of our customers. Today, I present to you a project that perfectly aligns with these core values and has the power to catapult us to new heights."}/>
+        <ExperienceCard title={"Direct Farm Pricing (No Middlemen)"} imageUrl={"./perks/perks.jpg"} heading={"Save 25–40% Instantly — Buy Straight From the Source"}  description={"We remove market middlemen who inflate prices. Buying directly from Malyam Agro means you get farm-to-you pricing — honest, transparent, and always more affordable than local markets."}/>
       
-        <ExperienceCard title={"Site Inspection"} imageUrl={"./experience/3.jpg"} heading={"MD/CEO & contractors"}  description={"During the site inspection, I thoroughly examined all aspects of the milk farm, starting with the physical infrastructure. I assessed the condition of the barns, milking parlors, and other facilities to ensure they were well-maintained and capable of accommodating our operational needs. Proper ventilation, lighting, and hygiene standards were also evaluated to ensure optimal conditions for the cows and milk production."}/>
+        <ExperienceCard title={"Fast Nationwide Delivery"} imageUrl={"./perks/perks02.jpg"} heading={"Get Your Livestock Anywhere in Nigeria Within 3–5 Days"}  description={"Whether you’re in Lagos, Abuja, or Kano, we deliver safely and on time. No transport headaches, no excuses — just healthy livestock arriving exactly when you need them."}/>
    
-        <ExperienceCard title={"Cattle Barn Inspection"} imageUrl={"./experience/1.jpg"} heading={"Newly constructed cattle barns"} description={"thorough evaluation of a cattle barn or cowshed to assess its condition, functionality, and compliance with safety and animal welfare standards. The inspection is typically conducted by a qualified individual, such as a veterinarian, livestock inspector, or farm manager, with expertise in cattle housing and management"}/>
+        <ExperienceCard title={"Flexible Order Sizes"} imageUrl={"./perks/perks04.jpg"} heading={"Order 1 or 100 — Every Customer Is a Priority"} description={"We serve both individuals and bulk buyers. Whether you need one ram for the family or a truckload for resale, we handle every order with equal care and professional logistics. "}/>
      </div>
     </motion.div>
   )
